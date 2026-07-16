@@ -1,0 +1,147 @@
+{
+  "info": {
+    "_postman_id": "d8518400-7e28-41c0-820d-da1827ccbbc1",
+    "name": "TechWave Store - API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56338052",
+    "_collection_link": "https://go.postman.co/collection/56338052-d8518400-7e28-41c0-820d-da1827ccbbc1?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "[POST] Create new post",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "",
+              "pm.test(\"Status code is 201\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "",
+              "pm.test(\"Response body is JSON\", function () {",
+              "    pm.response.to.be.json;",
+              "});",
+              "",
+              "pm.test(\"Response has an 'id' field and it's a number\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData).to.have.property(\"id\");",
+              "    pm.expect(jsonData.id).to.be.a(\"number\");",
+              "});",
+              "",
+              "pm.test(\"Response 'title' matches the sent title\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.title).to.eql(\"Пост от Middle QA\");",
+              "});",
+              "",
+              "pm.test(\"Response 'body' matches the sent body\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.body).to.eql(\"Я тестирую API через Postman и мне это нравится\");",
+              "});",
+              "",
+              "pm.test(\"Response 'userId' equals 1\", function () {",
+              "    var jsonData = pm.response.json();",
+              "    pm.expect(jsonData.userId).to.eql(1);",
+              "});",
+              "",
+              "var jsonData = pm.response.json();",
+              "pm.environment.set(\"new_post_id\", jsonData.id);"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\" : \"Пост от Middle QA\",\r\n    \"body\" : \"Я тестирую API через Postman и мне это нравится\",\r\n    \"userId\" : 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Negative get post",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Статус код должен быть 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://jsonplaceholder.typicode.com/posts/9999",
+          "protocol": "https",
+          "host": [
+            "jsonplaceholder",
+            "typicode",
+            "com"
+          ],
+          "path": [
+            "posts",
+            "9999"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "[GET] positive",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/posts/1",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "posts",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
