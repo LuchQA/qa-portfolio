@@ -1,2 +1,30 @@
-# qa-portfolio
-Junior QA Manual portfolio- checklist, bug reports, Postman
+QA Portfolio — Novikov Pavel | Junior QA Manual
+Портфолио для вакансии Junior QA Engineer (Manual) в RockITSoft. Все тесты — black-box, без доступа к коду, без покупок, на публичных стендах для QA.
+
+
+Обо мне
+Неоконченное профильное образование ВКИ НГУ (3 курса), опыт в IT-образовании: Юайти и QA.GURU (текущее). Понимаю домен QA, STLC, техники тест-дизайна, работаю с DevTools, Postman, SQL (базовый).
+
+
+    
+Проект 1: E-commerce (AutomationExercise + SauceDemo)
+Стенды: https://automationexercise.com/ + https://www.saucedemo.com/ — бесплатные стенды для QA
+Что протестировано:
+
+Регистрация / Логин / Логаут, негативные (без @, пустые поля, занятый email)
+Фильтры по категориям и брендам, сортировки A-Z / Price low-to-high
+Поиск (в т.ч. case-sensitivity)
+Корзина: добавление 1 и 2 товаров, увеличение кол-ва, удаление
+Checkout: AE-19a без логина (требует логин) и AE-19b с логином (E2E)
+UI: кросс-браузер (Chrome / Yandex), адаптив 375px и 1920,
+E2E: SD-07 полный флоу от логина до "Thank you for your order!"
+Результат: 38 проверок, 33 PASS / 5 FAIL, 5 баг-репортов с трассировкой.
+
+
+Проект 2: API (Postman)
+
+Выгрузил коллекцию запросов, а также на скриншотах показаны результаты.
+Выполнил: 
+- POST запрос с кодом 201 
+- Позитивный GET запрос с кодом 200
+- Негативный GET запрос с кодом 404
